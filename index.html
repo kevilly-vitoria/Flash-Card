@@ -1,39 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcard</title>
+  <meta charset="UTF-8">
+  <title>Flashcards 3D</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main>
-        <section id="container">
-            <article class="cartao">
-                <div class="cartao__conteudo">
-                    <h3>Programação</h3>
-                    <div class="cartao__conteudo__pergunta">
-                        O que é JavaScript?
-                    </div>
-                    <div class="cartao__conteudo__resposta">
-                        O JavaScript é uma linguagem de programação
-                    </div>
-                </div>
-            </article>
-            <article class="cartao">
-                <div class="cartao__conteudo">
-                    <h3>Programação</h3>
-                    <div class="cartao__conteudo__pergunta">
-                        O que é CSS?
-                    </div>
-                    <div class="cartao__conteudo__resposta">
-                        O CSS é uma linguagem de estilização
-                    </div>
-                </div>
-            </article>
-        </section>
-    </main>
-    <footer>
-        <p>Projeto desenvolvido pela Alura, sem fins lucrativos</p>
-    </footer>
+  <main class="app">
+    <section class="flashcards">
+      <div class="flashcards__container">
+        <div class="flashcard" tabindex="0" aria-pressed="false" aria-label="Virar card">
+          <div class="flashcard__faces">
+            <div class="flashcard__face flashcard__face--front">
+              <span class="flashcard__title"></span>
+              <span class="flashcard__icon"></span>
+              <span class="flashcard__content">Quem foi MC Kevin?</span>
+            </div>
+            <div class="flashcard__face flashcard__face--back">
+              <span class="flashcard__title"></span>
+              <span class="flashcard__icon"></span>
+              <span class="flashcard__content">Mc Kevin foi um Funkeiro e Rapper de São Paulo que fez muito sucesso entre os anos de 2014 e 2021</span>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard" tabindex="0" aria-pressed="false" aria-label="Virar card">
+          <div class="flashcard__faces">
+            <div class="flashcard__face flashcard__face--front">
+              <span class="flashcard__title"></span>
+              <span class="flashcard__icon"></span>
+              <span class="flashcard__content">Qual maior hit do cantor MC Kevin</span>
+            </div>
+            <div class="flashcard__face flashcard__face--back">
+              <span class="flashcard__title"></span>
+              <span class="flashcard__icon"></span>
+              <span class="flashcard__content">Cavalo de troia</span>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard" tabindex="0" aria-pressed="false" aria-label="Virar card">
+          <div class="flashcard__faces">
+            <div class="flashcard__face flashcard__face--front">
+              <span class="flashcard__title"></span>
+              <span class="flashcard__icon"></span>
+              <span class="flashcard__content">Qual ano MC Kevin nasceu?</span>
+            </div>
+            <div class="flashcard__face flashcard__face--back">
+              <span class="flashcard__title"></span>
+              <span class="flashcard__icon"></span>
+              <span class="flashcard__content">1998.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="background-overlay"></div>
+  <script src="script.js"></script>
 </body>
-</html>q
+</html>
