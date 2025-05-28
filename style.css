@@ -1,0 +1,181 @@
+:root {
+    --background-img: url(https://i.pinimg.com/736x/d3/2a/82/d32a822679453f04a15ae67b84587e55.jpg);
+    --card-width: 220px;
+    --card-height: 300px;
+    --card-radius: 20px;
+    --card-shadow: 0 6px 24px 0 rgba(0,0,0,0.60), 0 1.5px 8px 0 rgba(0,0,0,0.22);
+    --card-gradient-front: #101113; /* 100% opaco, sem alpha */
+    --card-gradient-back: #101113;  /* 100% opaco, sem alpha */
+    --card-border: 1.8px solid #23272b88;
+    --card-text-front: #fff;
+    --card-text-back: #fff;
+    --card-accent: #fff;
+    --card-hover-scale: 1.06;
+    --card-flip-transition: transform 0.77s cubic-bezier(.27,.7,.39,1.16);
+    --card-focus: 0 0 0 3px #f6c531cc;
+    --gap: 22px;
+    --overlay-bg: rgba(18,19,21, 0.90);
+    --font-family: 'Segoe UI', Arial, sans-serif;
+}
+  body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-family);
+    position: relative;
+    overflow-x: hidden;
+  }
+  .background-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    background: var(--background-img) no-repeat center center/cover;
+  }
+  .app {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flashcards {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .flashcards__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .flashcard {
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: var(--card-radius);
+    background: transparent;
+    box-shadow: var(--card-shadow);
+    border: var(--card-border);
+    cursor: pointer;
+    perspective: 1800px;
+    outline: none;
+    position: relative;
+    transition:
+      box-shadow 0.3s,
+      transform 0.22s cubic-bezier(.18,.78,.22,1.06);
+    will-change: transform;
+    user-select: none;
+    backface-visibility: hidden;
+    margin-bottom: 32px;
+  }
+  .flashcard:focus {
+    box-shadow: var(--card-shadow), var(--card-focus);
+  }
+  .flashcard:hover:not(.is-flipped):not(:active) {
+    transform: scale(var(--card-hover-scale)) translateY(-8px);
+    z-index: 3;
+  }
+  .flashcard:active {
+    transform: scale(0.98);
+  }
+  .flashcard__faces {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: var(--card-flip-transition);
+  }
+  .flashcard.is-flipped .flashcard__faces {
+    transform: rotateY(180deg);
+  }
+  
+  .flashcard__face {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--card-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0; left: 0;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    padding: 46px 32px 36px;
+    gap: 18px;
+    transition: background 0.32s, color 0.32s;
+    background-blend-mode: soft-light;
+  }
+  
+  .flashcard__face--front {
+    background: var(--card-gradient-front);
+    color: var(--card-text-front);
+    border-radius: var(--card-radius);
+    box-shadow: 0 1.5px 18px 0 #45494b33;
+    z-index: 2;
+  }
+  .flashcard__face--back {
+    background: var(--card-gradient-back);
+    color: var(--card-text-back);
+    transform: rotateY(180deg);
+    border-radius: var(--card-radius);
+    box-shadow: 0 1.5px 18px 0 #5e6d7e22;
+    z-index: 2;
+  }
+  
+  .flashcard__title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    margin-bottom: 6px;
+    color: var(--card-accent);
+    text-shadow: 0 1.5px 8px #1e222833;
+  }
+  .flashcard__icon {
+    font-size: 2.25rem;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+  .flashcard__content {
+    font-size: 1.13rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-align: center;
+    padding: 0 2px;
+    color: inherit;
+    text-shadow: 0 1.5px 8px #1e222833;
+  }
+  @media (max-width: 1100px) {
+    .flashcards__container {
+      gap: 22px;
+    }
+    .flashcard {
+      width: 92vw;
+      max-width: 370px;
+      margin-bottom: 24px;
+    }
+  }
+  @media (max-width: 700px) {
+    .flashcards__container {
+      flex-direction: column;
+      gap: 18px;
+    }
+    .flashcard {
+      width: 98vw;
+      max-width: 340px;
+      min-width: 0;
+      margin-bottom: 16px;
+    }
+  }
+  
+  /* Extra: slick 3D shadow when flipped */
+  .flashcard.is-flipped {
+    box-shadow: 0 16px 44px 0 #18202b66, 0 2.5px 12px 0 #818ba288;
+    z-index: 4;
+  }
